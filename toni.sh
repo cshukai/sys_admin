@@ -24,9 +24,6 @@ deletion_profile.py -i tophat_out_51010/accepted_hits.bam -l 110 -o output_clip_
 deletion_profile.py -i tophat_out_611339/accepted_hits.bam -l 110 -o output_clip_611339 &
 
 
-#FPKM
-FPKM_count.py -i tophat_out_51010/accepted_hits.bam -o output_clip_51010 -r maize_annotation.bed &
-FPKM_count.py -i tophat_out_611339/accepted_hits.bam -o output_clip_611339 -r maize_annotation.bed &
 
 #genebody
 

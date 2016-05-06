@@ -24,6 +24,25 @@ deletion_profile.py -i tophat_out_51010/accepted_hits.bam -l 110 -o output_clip_
 deletion_profile.py -i tophat_out_611339/accepted_hits.bam -l 110 -o output_clip_611339 &
 
 
+#insertion profile
+insertion_profile.py -i tophat_out_51010/accepted_hits.bam  -s "SE" -o output_51010 &
+insertion_profile.py -i tophat_out_611339/accepted_hits.bam -s "SE" -o output_611339 &
+
+# 6 mer
+read_hexamer.py -i tophat_out_51010/accepted_hits.bam -r /courses/7740_F2015/gwas_project/rna_seq/Zea_mays/Ensembl/AGPv3/Sequence/WholeGenomeFasta/genome.fa
+read_hexamer.py -i tophat_out_611339/accepted_hits.bam -r /courses/7740_F2015/gwas_project/rna_seq/Zea_mays/Ensembl/AGPv3/Sequence/WholeGenomeFasta/genome.fa
+
+#read duplication
+read_duplication.py -i tophat_out_51010/accepted_hits.bam -o output_51010 &
+read_duplication.py -i tophat_out_611339/accepted_hits.bam -o output_611339 &
+
+
+# sequence composition
+read_NVC.py -i tophat_out_51010/accepted_hits.bam -o output_51010 -x &
+read_NVC.py -i tophat_out_611339/accepted_hits.bam -o output_611339 -x &
+
+
+
 
 #genebody
 

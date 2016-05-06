@@ -1,12 +1,15 @@
 ################RSeQc######################
 # convert fastq to sam
-cd /opt/bio/picard-tools-2.1.1 
-nohup java -jar picard.jar FastqToSam FASTQ=/courses/7740_F2015/gwas_project/rna_seq/SRR611339.fastq OUTPUT=/courses/7740_F2015/gwas_project/rna_seq/SRR611339.bam  SAMPLE_NAME=gwas 
+#cd /opt/bio/picard-tools-2.1.1 
+#nohup java -jar picard.jar FastqToSam FASTQ=/courses/7740_F2015/gwas_project/rna_seq/SRR611339.fastq OUTPUT=/courses/7740_F2015/gwas_project/rna_seq/SRR611339.bam  SAMPLE_NAME=gwas 
 
 # GC content
-read_GC.py -i SRR611339.bam -o gc_output
+read_GC.py -i tophat_out_51010/accepted_hits.bam -o gc_output
+read_GC.py -i tophat_out_611339/accepted_hits.bam  -o output
+
 # qc
-read_quality.py -i SRR611339.bam -o output
+read_quality.py -i tophat_out_51010/accepted_hits.bam -o gc_output
+read_quality.py -i tophat_out_611339/accepted_hits.bam  -o output
 
 
 #ValueError: file header is empty (mode='r') - is it SAM/BAM format?

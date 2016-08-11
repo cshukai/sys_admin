@@ -1,7 +1,5 @@
 
 ################RSeQc##########################################
-
-
 # data conversion
 gff2bed < /courses/7740_F2015/gwas_project/ftp.ensemblgenomes.org/pub/plants/release-22/gff3/zea_mays/Zea_mays.AGPv3.22.gff3> maize_annotation.bed
 
@@ -29,8 +27,8 @@ insertion_profile.py -i tophat_out_51010/accepted_hits.bam  -s "SE" -o output_51
 insertion_profile.py -i tophat_out_611339/accepted_hits.bam -s "SE" -o output_611339 &
 
 # 6 mer
-read_hexamer.py -i tophat_out_51010/accepted_hits.bam -r /courses/7740_F2015/gwas_project/rna_seq/Zea_mays/Ensembl/AGPv3/Sequence/WholeGenomeFasta/genome.fa
-read_hexamer.py -i tophat_out_611339/accepted_hits.bam -r /courses/7740_F2015/gwas_project/rna_seq/Zea_mays/Ensembl/AGPv3/Sequence/WholeGenomeFasta/genome.fa
+read_hexamer.py -i /courses/7740_F2015/gwas_project/rna_seq/SRR611339.fastq -r /courses/7740_F2015/gwas_project/rna_seq/Zea_mays/Ensembl/AGPv3/Sequence/WholeGenomeFasta/genome.fa  >61133.6mer.txt &
+read_hexamer.py -i /courses/7740_F2015/gwas_project/rna_seq/SRR651010.fastq  -r /courses/7740_F2015/gwas_project/rna_seq/Zea_mays/Ensembl/AGPv3/Sequence/WholeGenomeFasta/genome.fa >51501.6mer.txt &
 
 #read duplication
 read_duplication.py -i tophat_out_51010/accepted_hits.bam -o output_51010 &
@@ -41,13 +39,15 @@ read_duplication.py -i tophat_out_611339/accepted_hits.bam -o output_611339 &
 read_NVC.py -i tophat_out_51010/accepted_hits.bam -o output_51010 -x &
 read_NVC.py -i tophat_out_611339/accepted_hits.bam -o output_611339 -x &
 
-
-
-
 #genebody
 
-geneBody_coverage.py -i tophat_out_51010/accepted_hits.bam -o output_51010 -r maize_annotation.bed &
-geneBody_coverage.py -i tophat_out_611339/accepted_hits.bam -o output_611339 -r maize_annotation.bed &
+geneBody_coverage.py   -i tophat_out_51010/accepted_hits.bam -o output_51010 -r maize_gene.bed &
+geneBody_coverage.py -i tophat_out_611339/accepted_hits.bam -o output_611339 -r maize_gene.bed &
+
+
+
+geneBody_coverage.py -i tophat_out_611339/accepted_hits.bam -o output_test -r maize_annotation.bed &
+
 ##############tophat alignment################################
 /courses/INFOINST8005_F2015/Software/tophat/tophat2 -o tophat_out_611339  -p 5  
 -G  /courses/7740_F2015/gwas_project/ftp.ensemblgenomes.org/pub/plants/release-2

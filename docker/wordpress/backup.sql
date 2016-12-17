@@ -1,0 +1,1 @@
+SELECT * from wp_users INTO OUTFILE '/scratch/wordpress_wp_users' FIELDS ENCLOSED BY '"' TERMINATED BY ';' ESCAPED BY '"'  LINES TERMINATED BY '\r\n';

@@ -1,0 +1,1 @@
+conda install -n images  -c conda-forge pandas
